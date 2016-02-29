@@ -55,10 +55,11 @@
                 font-size: 12px;
                 line-height: 20px;
             }
-            .repdata:hover {
-                /*fill: #d3d3d3;*/
+            /*.repdata:hover {
+                fill: #d3d3d3;
                 fill: #7e7e7e;
-            }
+                box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+            }*/
 
 </style>
 <body>
@@ -404,7 +405,7 @@ var repdata = [{
   ];
 
 
-var rectw = 98
+var rectw = 100
 var recth = 44
 
         svgchart.selectAll("rect")
@@ -425,23 +426,27 @@ var recth = 44
                     return colorArray[d.z]})
 
                .on("mouseover", function(d) {
+                      
+                      d3.select(this)
+                      .style('opacity',0.5)
+                      //Get this bar's x/y values, then augment for the tooltip
+                      var xPosition = parseFloat(d3.select(this).attr("x")) + 20;
+                      var yPosition = parseFloat(d3.select(this).attr("y")) + 50;
 
-                //Get this bar's x/y values, then augment for the tooltip
-                var xPosition = parseFloat(d3.select(this).attr("x")) + 20;
-                var yPosition = parseFloat(d3.select(this).attr("y")) + 50;
+                      //Update the tooltip position and value
+                      d3.select("#tooltip")
+                        .style("left", xPosition + "px")
+                        .style("top", yPosition + "px")
+                        .select("#value")
+                        .text(d.s);
 
-                //Update the tooltip position and value
-                d3.select("#tooltip")
-                  .style("left", xPosition + "px")
-                  .style("top", yPosition + "px")
-                  .select("#value")
-                  .text(d.s);
-
-                //Show the tooltip
-                d3.select("#tooltip").classed("hidden", false);
+                      //Show the tooltip
+                      d3.select("#tooltip").classed("hidden", false);
 
                 })
                .on("mouseout", function() {
+                d3.select(this)
+                      .style('opacity',1.0)
 
                 //Hide the tooltip
                 d3.select("#tooltip").classed("hidden", true);
