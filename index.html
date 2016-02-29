@@ -67,6 +67,7 @@
             <p><span id="value">100</span></p>
         </div>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.6/dist/js/alertify.js"></script>
 <script>
 
 
@@ -425,6 +426,29 @@ var recth = 44
                .attr("fill", function(d) {
                     return colorArray[d.z]})
 
+               .on("click", function(d) { 
+
+                      alertify
+                        .defaultValue("Fill in your feedback")
+                        .prompt("Is there anything wrong?",
+                          function (val, ev) {
+
+                            // The click event is in the event variable, so you can use it here.
+                            ev.preventDefault();
+
+                            // The value entered is availble in the val variable.
+                            alertify.success("We have received your feedback. Charts would be updated accordingly");
+
+                          }, function(ev) {
+
+                            // The click event is in the event variable, so you can use it here.
+                            ev.preventDefault();
+
+                            alertify.error("Seems its okay");
+
+                          });
+                  })
+
                .on("mouseover", function(d) {
                       
                       d3.select(this)
@@ -445,11 +469,11 @@ var recth = 44
 
                 })
                .on("mouseout", function() {
-                d3.select(this)
-                      .style('opacity',1.0)
+                      d3.select(this)
+                        .style('opacity',1.0)
 
                 //Hide the tooltip
-                d3.select("#tooltip").classed("hidden", true);
+                      d3.select("#tooltip").classed("hidden", true);
 
                });
                
