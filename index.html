@@ -71,7 +71,7 @@
 }
 .repdata:hover {
     /*fill: #d3d3d3;*/
-    fill: #7e7e7e;
+    opacity: 0.1;
 }
 svgchart.displayed {
     display: block;
@@ -96,9 +96,9 @@ svgchart.displayed {
   var colorArray = {};
   colorArray[-1] = "#313E4D"
   colorArray[1] = "#F7D24A"
-  colorArray[0] = "#F7EDC6"
 
-  var legendArray = ["Absence", "Presence"]
+
+  var legendArray = ["Absence", "Presence","No mention"]
 
   for (var d in datesreps){
     var months;
@@ -256,15 +256,36 @@ svgchart.displayed {
                  .append("rect")
                  .attr("class", "legend") 
                  .attr("x", function(d, i) {
-                      return 159 + i*99
+                      return 115 + i*99
                  })
                  .attr("y", function(d, i) {
                       return 540
                  })
-                 .attr("width", 99)
+                 .attr("width", 100)
                  .attr("height", 32)
                  .attr("fill", function(d,i) {
                       return colorArray[d]});
+
+  svg.selectAll("rect.nomention")
+                 .data([0])
+                 .enter()
+                 .append("rect")
+                 .attr("class", "nomention") 
+                 .attr("x", function(d, i) {
+                      return 115 + 198
+                 })
+                 .attr("y", function(d, i) {
+                      return 540
+                 })
+                 .attr("width", 100)
+                 .attr("height", 32)
+                 .attr("fill", function(d,i) {
+                      return "none"})
+                 .style("fill","white")
+                 .style("stroke","gray")
+                 .style("stroke-dasharray", ("3, 3"))
+                 .style("stroke-opacity", 2.0);
+
 
   svg.selectAll("text.legendText")
                  .data(legendArray)
@@ -276,7 +297,7 @@ svgchart.displayed {
                  })
                  .attr("text-anchor", "left")
                  .attr("x", function(d, i){
-                      return 185 + i*99})
+                      return 135 + i*99})
                  .attr("y", function(d, i) {
                       return 535;
                   })
@@ -291,7 +312,7 @@ svgchart.displayed {
                       return 'Legend';
                  })
                  .attr("text-anchor", "left")
-                 .attr("x", 100)
+                 .attr("x", 60)
                  .attr("y", 560)
                  .attr("font-family", "Helvetica Neue")
                  .attr("font-size", "14px")
@@ -597,7 +618,7 @@ svgchart.displayed {
     "s":""
   }
     ];
-/*
+
     svgchart.selectAll("rect.absentdata")
                  .data(absentdata)
                  .enter()
@@ -612,10 +633,10 @@ svgchart.displayed {
                  .attr("width", rectw)
                  .attr("height", recth)
                  .attr("transform", "translate(" + rectw*(-1)/2 + "," + 10 + ")")
-                 .attr("border-style", "dashed")
-                 .attr("fill","white")
-                 .attr("border-color","red");*/
-                 
+                 .style("fill","none")
+                 .style("stroke","gray")
+                 .style("stroke-dasharray", ("3, 3"))
+                 .style("stroke-opacity", .5); 
   </script>
 </body>
 </html>
