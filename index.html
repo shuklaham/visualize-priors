@@ -97,6 +97,8 @@ svgchart.displayed {
   colorArray[-1] = "#313E4D"
   colorArray[1] = "#F7D24A"
 
+   var rectw = 100
+   var recth = 25
 
   var legendArray = ["Absence", "Presence","No mention"]
 
@@ -259,10 +261,10 @@ svgchart.displayed {
                       return 115 + i*99
                  })
                  .attr("y", function(d, i) {
-                      return 540
+                      return 500
                  })
-                 .attr("width", 100)
-                 .attr("height", 32)
+                 .attr("width", rectw)
+                 .attr("height", recth)
                  .attr("fill", function(d,i) {
                       return colorArray[d]});
 
@@ -275,10 +277,10 @@ svgchart.displayed {
                       return 115 + 198
                  })
                  .attr("y", function(d, i) {
-                      return 540
+                      return 500
                  })
-                 .attr("width", 100)
-                 .attr("height", 32)
+                 .attr("width", rectw)
+                 .attr("height", recth)
                  .attr("fill", function(d,i) {
                       return "none"})
                  .style("fill","white")
@@ -299,7 +301,7 @@ svgchart.displayed {
                  .attr("x", function(d, i){
                       return 135 + i*99})
                  .attr("y", function(d, i) {
-                      return 535;
+                      return 495;
                   })
                  .attr("font-family", "Helvetica Neue")
                  .attr("font-size", "14px")
@@ -313,7 +315,7 @@ svgchart.displayed {
                  })
                  .attr("text-anchor", "left")
                  .attr("x", 60)
-                 .attr("y", 560)
+                 .attr("y", 520)
                  .attr("font-family", "Helvetica Neue")
                  .attr("font-size", "14px")
                  .attr("font-weight","bold")
@@ -336,7 +338,7 @@ svgchart.displayed {
 
   var yRange = d3.scale.ordinal()
       .domain(findings)
-      .rangePoints([0, height-440 ]);
+      .rangePoints([0, height-510 ]);
 
   // define the x axis
   var xAxis = d3.svg.axis()
@@ -463,8 +465,7 @@ svgchart.displayed {
     ];
 
 
-  var rectw = 100
-  var recth = 32
+ 
 
           svgchart.selectAll("rect")
                  .data(repdata)
@@ -479,7 +480,7 @@ svgchart.displayed {
                  })
                  .attr("width", rectw)
                  .attr("height", recth)
-                 .attr("transform", "translate(" + rectw*(-1)/2 + "," + 10 + ")")
+                 .attr("transform", "translate(" + rectw*(-1)/2 + "," + 20 + ")")
                  .attr("fill", function(d) {
                       return colorArray[d.z]})
 
@@ -632,7 +633,7 @@ svgchart.displayed {
                  })
                  .attr("width", rectw)
                  .attr("height", recth)
-                 .attr("transform", "translate(" + rectw*(-1)/2 + "," + 10 + ")")
+                 .attr("transform", "translate(" + rectw*(-1)/2 + "," + 20 + ")")
                  .style("fill","none")
                  .style("stroke","gray")
                  .style("stroke-dasharray", ("3, 3"))
