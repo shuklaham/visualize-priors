@@ -84,6 +84,7 @@ svgchart.displayed {
             <p><span id="value">100</span></p>
         </div>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.6/dist/js/alertify.js"></script>
 
   <script>
 
@@ -461,29 +462,57 @@ svgchart.displayed {
                  .attr("fill", function(d) {
                       return colorArray[d.z]})
 
-                 .on("mouseover", function(d) {
+                 .on("click", function(d) { 
 
-                  //Get this bar's x/y values, then augment for the tooltip
-                  var xPosition = parseFloat(d3.select(this).attr("x")) + 20;
-                  var yPosition = parseFloat(d3.select(this).attr("y")) + 50;
+                      alertify
+                        .defaultValue("Fill in your feedback")
+                        .prompt("Is there anything wrong?",
+                          function (val, ev) {
 
-                  //Update the tooltip position and value
-                  d3.select("#tooltip")
-                    .style("left", xPosition + "px")
-                    .style("top", yPosition + "px")
-                    .select("#value")
-                    .text(d.s);
+                            // The click event is in the event variable, so you can use it here.
+                            ev.preventDefault();
 
-                  //Show the tooltip
-                  d3.select("#tooltip").classed("hidden", false);
+                            // The value entered is availble in the val variable.
+                            alertify.success("We have received your feedback. Charts would be updated accordingly");
 
+                          }, function(ev) {
+
+                            // The click event is in the event variable, so you can use it here.
+                            ev.preventDefault();
+
+                            alertify.error("Seems its okay");
+
+                          });
                   })
-                 .on("mouseout", function() {
 
-                  //Hide the tooltip
-                  d3.select("#tooltip").classed("hidden", true);
+               .on("mouseover", function(d) {
+                      
+                      d3.select(this)
+                      .style('opacity',0.5)
+                      //Get this bar's x/y values, then augment for the tooltip
+                      var xPosition = parseFloat(d3.select(this).attr("x")) + 20;
+                      var yPosition = parseFloat(d3.select(this).attr("y")) + 50;
 
-                 });
+                      //Update the tooltip position and value
+                      d3.select("#tooltip")
+                        .style("left", xPosition + "px")
+                        .style("top", yPosition + "px")
+                        .select("#value")
+                        .text(d.s);
+
+                      //Show the tooltip
+                      d3.select("#tooltip").classed("hidden", false);
+
+                })
+               .on("mouseout", function() {
+                      d3.select(this)
+                        .style('opacity',1.0)
+
+                //Hide the tooltip
+                      d3.select("#tooltip").classed("hidden", true);
+
+               });
+
   
   var absentdata = [{
     "x": "Nov-01-2015 5-months-old",
