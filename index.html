@@ -185,7 +185,7 @@ svgchart.displayed {
         .attr("y", -80)
         .text("SUNBURST")
         .attr("font-family", "Helvetica Neue")
-        .attr("font-size", "20px")
+        .attr("font-size", "30px")
         .attr("font-weight","bold")
         .attr("fill", "black");
 
@@ -194,7 +194,7 @@ svgchart.displayed {
         .attr("class", "title")
         .attr("x", 10)
         .attr("y", -50)
-        .text("CLINICAL STATEMENT: Metastatic gastric cancer")
+        .text("PATIENT NAME: ABC")
         .attr("font-family", "Helvetica Neue")
         .attr("font-size", "14px")
         .attr("font-weight","bold")
@@ -204,11 +204,22 @@ svgchart.displayed {
         .attr("class", "title")
         .attr("x", 10)
         .attr("y", -35)
+        .text("CLINICAL STATEMENT: Metastatic gastric cancer")
+        .attr("font-family", "Helvetica Neue")
+        .attr("font-size", "14px")
+        .attr("font-weight","bold")
+        .attr("fill", "black");
+
+  svgchart.append("text")
+        .attr("class", "title")
+        .attr("x", 10)
+        .attr("y", -20)
         .text("TECHNIQUE: CT of the chest, abdomen and pelvis with intravenous contrast")
         .attr("font-family", "Helvetica Neue")
         .attr("font-size", "14px")
         .attr("font-weight","bold")
         .attr("fill", "black");
+
 
   svgchart.append("text")
         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
