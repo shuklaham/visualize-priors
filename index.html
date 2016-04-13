@@ -246,7 +246,7 @@
 
   svgchart.append("text")
         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-        .attr("transform", "translate("+ 525 +","+280+")rotate(90)")  // text is drawn off the screen top left, move down and out and rotate
+        .attr("transform", "translate("+ 540 +","+280+")rotate(90)")  // text is drawn off the screen top left, move down and out and rotate
         .text("FINDINGS")
         .attr("font-family", "Helvetica Neue")
         .attr("font-size", "16px")
@@ -663,20 +663,24 @@
                  .style("stroke-dasharray", ("3, 3"))
                  .style("stroke-opacity", .5);
 
+                
+    oldiesdata = [{"t":"10-months-old","x":datesreps[0],"y":findings[0]},{"t":"8-months-old","x":datesreps[1],"y":findings[0]},{"t":"6-months-old","x":datesreps[2],"y":findings[0]}];
+
     svgchart.selectAll("oldies")
-               .data([{"t":"10-months-old","x":datesreps[0],"y":findings[0]},{"t":"8-months-old","x":datesreps[1],"y":findings[0]},{"t":"6-months-old","x":datesreps[2],"y":findings[0]}])
+               .data(oldiesdata)
                .enter()
                .append("text")
                .text(function(d){
                       return (d.t);
                  })
                .attr("x", function(d, i) {
-                    return xRange(d.x)+65;
+                    return xRange(d.x)+100;
                })
                .attr("y", function(d, i) {
                     return yRange(d.y)+138;})
-               .attr("font-size", "14px")
+               .attr("font-size", "13.5px")
                .attr("fill", "black")
+               .attr("text-anchor", "middle");
 
 
   </script>
