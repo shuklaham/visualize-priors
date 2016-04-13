@@ -193,10 +193,10 @@
   d3.select("svg")
     .append("image")
     .attr("xlink:href", "./images/hippo.png")
-    .attr("x", "75px")
-    .attr("y", "-25px")
-    .attr("width", "135px")
-    .attr("height", "135px");
+    .attr("x", "220px")
+    .attr("y", "-35px")
+    .attr("width", "200px")
+    .attr("height", "200px");
 
 //Insert Attribution
   d3.select("svg")
@@ -212,51 +212,41 @@
 
 
   //Title sunburst
-  svgchart.append("text")
-        .attr("class", "title")
-        .attr("x", 180)
-        .attr("y", -60)
-        .text("SUNBURST")
-        .attr("font-family", "Helvetica Neue")
-        .attr("font-size", "30px")
-        .attr("font-weight","bold")
-        .attr("fill", "black");
-
-
-  svgchart.append("text")
-        .attr("class", "title")
-        .attr("x", 10)
-        .attr("y", 15)
-        .text("PATIENT NAME: ABC")
-        .attr("font-family", "Helvetica Neue")
-        .attr("font-size", "14px")
-        .attr("font-weight","bold")
-        .attr("fill", "black");
-
-  svgchart.append("text")
-        .attr("class", "title")
-        .attr("x", 10)
-        .attr("y", 30)
-        .text("CLINICAL STATEMENT: Metastatic gastric cancer")
-        .attr("font-family", "Helvetica Neue")
-        .attr("font-size", "14px")
-        .attr("font-weight","bold")
-        .attr("fill", "black");
 
   svgchart.append("text")
         .attr("class", "title")
         .attr("x", 10)
         .attr("y", 45)
+        .text("PATIENT NAME: ABC")
+        .attr("font-family", "Helvetica Neue")
+        .attr("font-size", "16px")
+        .attr("font-weight","bold")
+        .attr("fill", "black");
+
+  svgchart.append("text")
+        .attr("class", "title")
+        .attr("x", 10)
+        .attr("y", 70)
+        .text("CLINICAL STATEMENT: Metastatic gastric cancer")
+        .attr("font-family", "Helvetica Neue")
+        .attr("font-size", "16px")
+        .attr("font-weight","bold")
+        .attr("fill", "black");
+
+  svgchart.append("text")
+        .attr("class", "title")
+        .attr("x", 10)
+        .attr("y", 95)
         .text("TECHNIQUE: CT of the chest, abdomen and pelvis with intravenous contrast")
         .attr("font-family", "Helvetica Neue")
-        .attr("font-size", "14px")
+        .attr("font-size", "16px")
         .attr("font-weight","bold")
         .attr("fill", "black");
 
 
   svgchart.append("text")
         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-        .attr("transform", "translate("+ 525 +","+180+")rotate(90)")  // text is drawn off the screen top left, move down and out and rotate
+        .attr("transform", "translate("+ 525 +","+280+")rotate(90)")  // text is drawn off the screen top left, move down and out and rotate
         .text("FINDINGS")
         .attr("font-family", "Helvetica Neue")
         .attr("font-size", "16px")
@@ -291,7 +281,7 @@
                       return 145 + i*99
                  })
                  .attr("y", function(d, i) {
-                      return 540
+                      return 590
                  })
                  .attr("width", rectw)
                  .attr("height", recth)
@@ -307,7 +297,7 @@
                       return 145 + 198
                  })
                  .attr("y", function(d, i) {
-                      return 540
+                      return 590
                  })
                  .attr("width", rectw)
                  .attr("height", recth)
@@ -331,10 +321,10 @@
                  .attr("x", function(d, i){
                       return 155 + i*99})
                  .attr("y", function(d, i) {
-                      return 535;
+                      return 585;
                   })
                  .attr("font-family", "Helvetica Neue")
-                 .attr("font-size", "14px")
+                 .attr("font-size", "16px")
                  .attr("font-weight","bold")
                  .attr("fill", "black");
 
@@ -345,9 +335,9 @@
                  })
                  .attr("text-anchor", "left")
                  .attr("x", 70)
-                 .attr("y", 550)
+                 .attr("y", 610)
                  .attr("font-family", "Helvetica Neue")
-                 .attr("font-size", "14px")
+                 .attr("font-size", "18px")
                  .attr("font-weight","bold")
                  .attr("fill", "black");
 
@@ -384,7 +374,7 @@
   svgchart.append("g")
       .attr("class", "fontxaxis")
       .call(xAxis)
-      .attr("transform", "translate(0,"+100+")")
+      .attr("transform", "translate(0,"+150+")")
       .selectAll(".tick text")
       .attr("transform", "translate(0,"+-20+")");
 
@@ -416,8 +406,10 @@
   // draw the y axis
   svgchart.append("g")
       .attr("class", "fontyaxis")
-      .attr("transform", "translate(" + 370 + ","+100+")")
+      .attr("transform", "translate(" + 370 + ","+150+")")
       .call(yAxis);
+
+
 
 
   var repdata = [{
@@ -509,7 +501,7 @@
                  })
                  .attr("width", rectw)
                  .attr("height", recth)
-                 .attr("transform", "translate(" + rectw*(-1)/2 + "," + 85 + ")")
+                 .attr("transform", "translate(" + rectw*(-1)/2 + "," + 135 + ")")
                  .attr("fill", function(d) {
                       return colorArray[d.z]})
 
@@ -662,7 +654,7 @@
                  })
                  .attr("width", rectw)
                  .attr("height", recth)
-                 .attr("transform", "translate(" + rectw*(-1)/2 + "," + 85 + ")")
+                 .attr("transform", "translate(" + rectw*(-1)/2 + "," + 135 + ")")
                  .style("fill","none")
                  .style("stroke","gray")
                  .style("stroke-dasharray", ("3, 3"))
@@ -679,7 +671,7 @@
                     return xRange(d.x)+65;
                })
                .attr("y", function(d, i) {
-                    return yRange(d.y)+88;})
+                    return yRange(d.y)+138;})
                .attr("font-size", "13px")
                .attr("fill", "black");
 
