@@ -192,6 +192,19 @@
     .attr("width", "135px")
     .attr("height", "135px");
 
+//Insert Attribution
+  d3.select("svg")
+    .append("text")
+    .text("Logo designed using Hipster Logo Generator")
+    .attr("x", function(d,i){return width/4;})
+    .attr("y", function(d,i){return height-20;})
+    .attr("font-weight","bold")
+    .attr("fill", "gray")
+    .attr("font-weight","bold");
+
+
+
+
   //Title sunburst
   svgchart.append("text")
         .attr("class", "title")
