@@ -66,7 +66,7 @@
 #tooltip p {
     margin: 0;
     font-family: sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 20px;
     position: relative;
 }
@@ -376,6 +376,7 @@
       .call(xAxis)
       .attr("transform", "translate(0,"+150+")")
       .selectAll(".tick text")
+      .style("font-size","13px")
       .attr("transform", "translate(0,"+-20+")");
 
 
@@ -407,7 +408,9 @@
   svgchart.append("g")
       .attr("class", "fontyaxis")
       .attr("transform", "translate(" + 370 + ","+150+")")
-      .call(yAxis);
+      .call(yAxis)
+      .selectAll(".tick text")
+      .style("font-size","13px");
 
 
 
@@ -672,8 +675,8 @@
                })
                .attr("y", function(d, i) {
                     return yRange(d.y)+138;})
-               .attr("font-size", "13px")
-               .attr("fill", "black");
+               .attr("font-size", "14px")
+               .attr("fill", "black")
 
 
   </script>
