@@ -134,8 +134,8 @@
                   "     "]
 
   //margins and width
-  var margin = {top: 100  , right:0, bottom: 100, left: 10},
-      width = 600,// - margin.left - margin.right,
+  var margin = {top: 100  , right:0, bottom: 100, left: 100},
+      width = 800,// - margin.left - margin.right,
       height = 800, //- margin.top - margin.bottom;
       historywidth = 600,
       historyheight = 100
@@ -198,30 +198,30 @@
   svgchart.append("text")
         .attr("class", "title")
         .attr("x", 10)
-        .attr("y", -50)
+        .attr("y", -20)
         .text("PATIENT NAME: ABC")
         .attr("font-family", "Helvetica Neue")
-        .attr("font-size", "13px")
+        .attr("font-size", "14px")
         .attr("font-weight","bold")
         .attr("fill", "black");
 
   svgchart.append("text")
         .attr("class", "title")
         .attr("x", 10)
-        .attr("y", -35)
+        .attr("y", -5)
         .text("CLINICAL STATEMENT: Metastatic gastric cancer")
         .attr("font-family", "Helvetica Neue")
-        .attr("font-size", "13px")
+        .attr("font-size", "14px")
         .attr("font-weight","bold")
         .attr("fill", "black");
 
   svgchart.append("text")
         .attr("class", "title")
         .attr("x", 10)
-        .attr("y", -20)
+        .attr("y", 10)
         .text("TECHNIQUE: CT of the chest, abdomen and pelvis with intravenous contrast")
         .attr("font-family", "Helvetica Neue")
-        .attr("font-size", "13px")
+        .attr("font-size", "14px")
         .attr("font-weight","bold")
         .attr("fill", "black");
 
@@ -260,7 +260,7 @@
                  .append("rect")
                  .attr("class", "legend") 
                  .attr("x", function(d, i) {
-                      return 115 + i*99
+                      return 145 + i*99
                  })
                  .attr("y", function(d, i) {
                       return 500
@@ -276,7 +276,7 @@
                  .append("rect")
                  .attr("class", "nomention") 
                  .attr("x", function(d, i) {
-                      return 115 + 198
+                      return 145 + 198
                  })
                  .attr("y", function(d, i) {
                       return 500
@@ -301,7 +301,7 @@
                  })
                  .attr("text-anchor", "left")
                  .attr("x", function(d, i){
-                      return 135 + i*99})
+                      return 155 + i*99})
                  .attr("y", function(d, i) {
                       return 495;
                   })
@@ -316,7 +316,7 @@
                       return 'Legend';
                  })
                  .attr("text-anchor", "left")
-                 .attr("x", 55)
+                 .attr("x", 70)
                  .attr("y", 520)
                  .attr("font-family", "Helvetica Neue")
                  .attr("font-size", "14px")
@@ -336,7 +336,7 @@
   // define the x and y scale
   var xRange = d3.scale.ordinal()
       .domain(datesreps)
-      .rangePoints([0, width-200]);
+      .rangePoints([0, width/2]);
 
   var yRange = d3.scale.ordinal()
       .domain(findings)
@@ -356,9 +356,9 @@
   svgchart.append("g")
       .attr("class", "fontxaxis")
       .call(xAxis)
-      .attr("transform", "translate(0,"+30+")")
+      .attr("transform", "translate(0,"+60+")")
       .selectAll(".tick text")
-      .attr("transform", "translate(0,"+-20+")");
+      .attr("transform", "translate(0,"+-15+")");
 
 
   function wrap(text, width) {
@@ -388,7 +388,7 @@
   // draw the y axis
   svgchart.append("g")
       .attr("class", "fontyaxis")
-      .attr("transform", "translate(" + 370 + ","+30+")")
+      .attr("transform", "translate(" + 370 + ","+60+")")
       .call(yAxis);
 
 
@@ -481,7 +481,7 @@
                  })
                  .attr("width", rectw)
                  .attr("height", recth)
-                 .attr("transform", "translate(" + rectw*(-1)/2 + "," + 20 + ")")
+                 .attr("transform", "translate(" + rectw*(-1)/2 + "," + 45 + ")")
                  .attr("fill", function(d) {
                       return colorArray[d.z]})
 
@@ -634,7 +634,7 @@
                  })
                  .attr("width", rectw)
                  .attr("height", recth)
-                 .attr("transform", "translate(" + rectw*(-1)/2 + "," + 20 + ")")
+                 .attr("transform", "translate(" + rectw*(-1)/2 + "," + 45 + ")")
                  .style("fill","none")
                  .style("stroke","gray")
                  .style("stroke-dasharray", ("3, 3"))
@@ -651,7 +651,7 @@
                     return xRange(d.x)+65;
                })
                .attr("y", function(d, i) {
-                    return yRange(d.y)+15;})
+                    return yRange(d.y)+48;})
                .attr("font-size", "13px")
                .attr("fill", "black");
 
