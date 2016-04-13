@@ -68,13 +68,14 @@
     font-family: sans-serif;
     font-size: 12px;
     line-height: 20px;
+    position: relative;
 }
 .repdata:hover {
     /*fill: #d3d3d3;*/
     opacity: 0.1;
 }
 
-.svgMain {margin-left:auto; margin-right:auto; display:block;}
+.svgMain {margin-left:auto; margin-right:auto; display:block;}*/
 
 </style>
 <body>
@@ -116,8 +117,8 @@
             }
     }
 
-  newdates.splice(0, 0, " ");
-  newdates.push("   ");
+  datesreps.splice(0, 0, " ");
+  datesreps.push("   ");
 
   var findings = ["    ",
                   "Hepatic Lesions",
@@ -133,7 +134,7 @@
                   "     "]
 
   //margins and width
-  var margin = {top: 100  , right: 100, bottom: 100, left: 10},
+  var margin = {top: 100  , right:0, bottom: 100, left: 10},
       width = 600,// - margin.left - margin.right,
       height = 800, //- margin.top - margin.bottom;
       historywidth = 600,
@@ -200,7 +201,7 @@
         .attr("y", -50)
         .text("PATIENT NAME: ABC")
         .attr("font-family", "Helvetica Neue")
-        .attr("font-size", "14px")
+        .attr("font-size", "13px")
         .attr("font-weight","bold")
         .attr("fill", "black");
 
@@ -210,7 +211,7 @@
         .attr("y", -35)
         .text("CLINICAL STATEMENT: Metastatic gastric cancer")
         .attr("font-family", "Helvetica Neue")
-        .attr("font-size", "14px")
+        .attr("font-size", "13px")
         .attr("font-weight","bold")
         .attr("fill", "black");
 
@@ -220,14 +221,14 @@
         .attr("y", -20)
         .text("TECHNIQUE: CT of the chest, abdomen and pelvis with intravenous contrast")
         .attr("font-family", "Helvetica Neue")
-        .attr("font-size", "14px")
+        .attr("font-size", "13px")
         .attr("font-weight","bold")
         .attr("fill", "black");
 
 
   svgchart.append("text")
         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-        .attr("transform", "translate("+ 520 +","+180+")rotate(90)")  // text is drawn off the screen top left, move down and out and rotate
+        .attr("transform", "translate("+ 525 +","+180+")rotate(90)")  // text is drawn off the screen top left, move down and out and rotate
         .text("FINDINGS")
         .attr("font-family", "Helvetica Neue")
         .attr("font-size", "16px")
@@ -315,7 +316,7 @@
                       return 'Legend';
                  })
                  .attr("text-anchor", "left")
-                 .attr("x", 60)
+                 .attr("x", 55)
                  .attr("y", 520)
                  .attr("font-family", "Helvetica Neue")
                  .attr("font-size", "14px")
@@ -334,7 +335,7 @@
   // draw the x axis
   // define the x and y scale
   var xRange = d3.scale.ordinal()
-      .domain(newdates)
+      .domain(datesreps)
       .rangePoints([0, width-200]);
 
   var yRange = d3.scale.ordinal()
@@ -351,14 +352,13 @@
       .scale(yRange)
       .orient("right");
 
-  // draw the x axis
+  // draw the x axis 
   svgchart.append("g")
       .attr("class", "fontxaxis")
       .call(xAxis)
       .attr("transform", "translate(0,"+30+")")
-    .selectAll(".tick text")
-      .call(wrap, xRange.rangeBand())
-      .attr("transform", "translate(0,"+-30+")");
+      .selectAll(".tick text")
+      .attr("transform", "translate(0,"+-20+")");
 
 
   function wrap(text, width) {
@@ -393,72 +393,72 @@
 
 
   var repdata = [{
-    "x": "Nov-01-2015 5-months-old",
+    "x": "Nov-01-2015",
     "y": "Adrenal Nodules",
     "z":1,
     "s":"Progression of disease with increase in lymphadenopathy and bilateral adrenal nodules"
   }, {
-    "x": "Nov-01-2015 5-months-old",
+    "x": "Nov-01-2015",
     "y": "Retroperitoneal Edema",
     "z":1,
     "s":"Increased mesenteric/retroperitoneal edema"
   }, {
-    "x": "Nov-01-2015 5-months-old",
+    "x": "Nov-01-2015",
     "y": "Small Volume Ascites",
     "z":1,
     "s":"New small-volume ascites"
   }, {
-    "x": "Nov-01-2015 5-months-old",
+    "x": "Nov-01-2015",
     "y": "Soft Tissue Thickening",
     "z":1,
     "s": "Soft tissue thickening along the undersurface of the left diaphragm is stable from the recent exam but increased from older studies and suspicious for peritoneal tumor"
   }, {
-    "x": "Nov-01-2015 5-months-old",
+    "x": "Nov-01-2015",
     "y": "Vertebral Body",
     "z":1,
     "s":"Increase in subtle sclerosis in the superior half of the L2 vertebral body suspicious for metastasis"
   }, {
-    "x": "Nov-01-2015 5-months-old",
+    "x": "Nov-01-2015",
     "y": "Metastasis",
     "z":1,
     "s":"Increase in subtle sclerosis in the superior half of the L2 vertebral body suspicious for metastasis"
   },{
-    "x": "Sep-01-2015 7-months-old",
+    "x": "Sep-01-2015",
     "y": "Hepatic Lesions",
     "z":-1,
     "s":"No new hepatic lesions identified"
   }, {
-    "x": "Sep-01-2015 7-months-old",
+    "x": "Sep-01-2015",
     "y": "Lymphadenopathy",
     "z":1,
     "s":"Stable mild abdominopelvic lymphadenopathy"
   }, {
-    "x": "Sep-01-2015 7-months-old",
+    "x": "Sep-01-2015",
     "y": "Hepatic Metastases",
     "z":1,
     "s":"No new hepatic lesions identified"
   }, {
-    "x": "Sep-01-2015 7-months-old",
+    "x": "Sep-01-2015",
     "y": "Adrenal Metastasis",
     "z":1,
     "s":"Stable right adrenal metastatic lesion"
   },{
-    "x": "July-01-2015 9-months-old",
+    "x": "July-01-2015",
     "y": "Hepatic Lesions",
     "z":-1,
     "s":"No new suspicious hepatic lesions"
   },{
-    "x": "July-01-2015 9-months-old",
+    "x": "July-01-2015",
     "y": "Lymphadenopathy",
     "z":1,
     "s":"Mild abdominopelvic lymphadenopathy, with nodes stable or slightly decreased in size"
   },{
-    "x": "July-01-2015 9-months-old",
+    "x": "July-01-2015",
     "y": "Hepatic Metastases",
     "z":1,
     "s":"Stable hepatic metastasis"
   },{
-    "x": "July-01-2015 9-months-old",
+    "x": "July-01-2015",
     "y": "Adrenal Metastasis",
     "z":1,
     "s":"Mild interval decrease in size of bilateral adrenal metastases"
@@ -513,7 +513,7 @@
                       d3.select(this)
                       .style('opacity',0.5)
                       //Get this bar's x/y values, then augment for the tooltip
-                      var xPosition = parseFloat(d3.select(this).attr("x")) + 350;
+                      var xPosition = parseFloat(d3.select(this).attr("x")) + 100;
                       var yPosition = parseFloat(d3.select(this).attr("y")) + 100;
 
                       //Update the tooltip position and value
@@ -538,83 +538,83 @@
 
   
   var absentdata = [{
-    "x": "Nov-01-2015 5-months-old",
+    "x": "Nov-01-2015",
     "y": "Hepatic Lesions",
     "z":0,
     "s":""
   }, {
-    "x": "Nov-01-2015 5-months-old",
+    "x": "Nov-01-2015",
     "y": "Lymphadenopathy",
     "z":0,
     "s":""
   },{
-    "x": "Sep-01-2015 7-months-old",
+    "x": "Sep-01-2015",
     "y": "Adrenal Nodules",
     "z":0,
     "s":""
   }, {
-    "x": "Sep-01-2015 7-months-old",
+    "x": "Sep-01-2015",
     "y": "Retroperitoneal Edema",
     "z":0,
     "s":""
   }, {
-    "x": "Sep-01-2015 7-months-old",
+    "x": "Sep-01-2015",
     "y": "Small Volume Ascites",
     "z":0,
     "s":"New small-volume ascites"
   }, {
-    "x": "Sep-01-2015 7-months-old",
+    "x": "Sep-01-2015",
     "y": "Soft Tissue Thickening",
     "z":0,
     "s": ""
   }, {
-    "x": "Sep-01-2015 7-months-old",
+    "x": "Sep-01-2015",
     "y": "Vertebral Body",
     "z":0,
     "s":""
   }, {
-    "x": "Sep-01-2015 7-months-old",
+    "x": "Sep-01-2015",
     "y": "Metastasis",
     "z":0,
     "s":""
   },
   {
-    "x": "July-01-2015 9-months-old",
+    "x": "July-01-2015",
     "y": "Adrenal Nodules",
     "z":0,
     "s":""
   }, {
-    "x": "July-01-2015 9-months-old",
+    "x": "July-01-2015",
     "y": "Retroperitoneal Edema",
     "z":0,
     "s":""
   }, {
-    "x": "July-01-2015 9-months-old",
+    "x": "July-01-2015",
     "y": "Small Volume Ascites",
     "z":0,
     "s":"New small-volume ascites"
   }, {
-    "x": "July-01-2015 9-months-old",
+    "x": "July-01-2015",
     "y": "Soft Tissue Thickening",
     "z":0,
     "s": ""
   }, {
-    "x": "July-01-2015 9-months-old",
+    "x": "July-01-2015",
     "y": "Vertebral Body",
     "z":0,
     "s":""
   }, {
-    "x": "July-01-2015 9-months-old",
+    "x": "July-01-2015",
     "y": "Metastasis",
     "z":0,
     "s":""
   },{
-    "x": "Nov-01-2015 5-months-old",
+    "x": "Nov-01-2015",
     "y": "Hepatic Metastases",
     "z":0,
     "s":""
   },{
-    "x": "Nov-01-2015 5-months-old",
+    "x": "Nov-01-2015",
     "y": "Adrenal Metastasis",
     "z":0,
     "s":""
@@ -638,80 +638,23 @@
                  .style("fill","none")
                  .style("stroke","gray")
                  .style("stroke-dasharray", ("3, 3"))
-                 .style("stroke-opacity", .5); 
+                 .style("stroke-opacity", .5);
 
-  var repdata = [{
-    "x": "Nov-01-2015 5-months-old",
-    "y": "Adrenal Nodules",
-    "z":1,
-    "s":"Progression of disease with increase in lymphadenopathy and bilateral adrenal nodules"
-  }, {
-    "x": "Nov-01-2015 5-months-old",
-    "y": "Retroperitoneal Edema",
-    "z":1,
-    "s":"Increased mesenteric/retroperitoneal edema"
-  }, {
-    "x": "Nov-01-2015 5-months-old",
-    "y": "Small Volume Ascites",
-    "z":1,
-    "s":"New small-volume ascites"
-  }, {
-    "x": "Nov-01-2015 5-months-old",
-    "y": "Soft Tissue Thickening",
-    "z":1,
-    "s": "Soft tissue thickening along the undersurface of the left diaphragm is stable from the recent exam but increased from older studies and suspicious for peritoneal tumor"
-  }, {
-    "x": "Nov-01-2015 5-months-old",
-    "y": "Vertebral Body",
-    "z":1,
-    "s":"Increase in subtle sclerosis in the superior half of the L2 vertebral body suspicious for metastasis"
-  }, {
-    "x": "Nov-01-2015 5-months-old",
-    "y": "Metastasis",
-    "z":1,
-    "s":"Increase in subtle sclerosis in the superior half of the L2 vertebral body suspicious for metastasis"
-  },{
-    "x": "Sep-01-2015 7-months-old",
-    "y": "Hepatic Lesions",
-    "z":-1,
-    "s":"No new hepatic lesions identified"
-  }, {
-    "x": "Sep-01-2015 7-months-old",
-    "y": "Lymphadenopathy",
-    "z":1,
-    "s":"Stable mild abdominopelvic lymphadenopathy"
-  }, {
-    "x": "Sep-01-2015 7-months-old",
-    "y": "Hepatic Metastases",
-    "z":1,
-    "s":"No new hepatic lesions identified"
-  }, {
-    "x": "Sep-01-2015 7-months-old",
-    "y": "Adrenal Metastasis",
-    "z":1,
-    "s":"Stable right adrenal metastatic lesion"
-  },{
-    "x": "July-01-2015 9-months-old",
-    "y": "Hepatic Lesions",
-    "z":-1,
-    "s":"No new suspicious hepatic lesions"
-  },{
-    "x": "July-01-2015 9-months-old",
-    "y": "Lymphadenopathy",
-    "z":1,
-    "s":"Mild abdominopelvic lymphadenopathy, with nodes stable or slightly decreased in size"
-  },{
-    "x": "July-01-2015 9-months-old",
-    "y": "Hepatic Metastases",
-    "z":1,
-    "s":"Stable hepatic metastasis"
-  },{
-    "x": "July-01-2015 9-months-old",
-    "y": "Adrenal Metastasis",
-    "z":1,
-    "s":"Mild interval decrease in size of bilateral adrenal metastases"
-  }
-    ];
+    svgchart.selectAll("oldies")
+               .data([{"t":"9-months-old","x":datesreps[0],"y":findings[0]},{"t":"5-months-old","x":datesreps[1],"y":findings[0]},{"t":"5-months-old","x":datesreps[2],"y":findings[0]}])
+               .enter()
+               .append("text")
+               .text(function(d){
+                      return (d.t);
+                 })
+               .attr("x", function(d, i) {
+                    return xRange(d.x)+65;
+               })
+               .attr("y", function(d, i) {
+                    return yRange(d.y)+15;})
+               .attr("font-size", "13px")
+               .attr("fill", "black");
+
 
   </script>
 </body>
